@@ -222,9 +222,22 @@ function Reserve(){
 
 
 function Favorite(){
+  const [isScrolled, setIsScrolled]= useState(false);
+  window.addEventListener('scroll', function(){
+    console.log(window.scrollY)
+    if(window.scrollY >= 1500  && window.scrollY <= 2500){
+      setIsScrolled(true);
+    }else{
+      setIsScrolled(false);
+    }
+  });
   return(
-    <section>
-      <img src="./favorite.png" alt="favorite" />
+    <section className='Favorite'>
+      <img className='favoriteBg' src="./fav_prod_bg_new.jpg" alt="favorite" />
+      {!isScrolled && <img className="favoriteTxt01" src="./fav_prod_txt01.png" alt="favorite" />}
+      {isScrolled && <img className="favoriteTxt01 favoriteTxtAni" src="./fav_prod_txt01.png" alt="favorite" />}
+      {!isScrolled && <img className="favoriteTxt02" src="./fav_prod_txt02.png" alt="favorite" />}
+      {isScrolled &&<img className="favoriteTxt02 favoriteTxtAni" src="./fav_prod_txt02.png" alt="favorite" />}
     </section>
   )
 }
